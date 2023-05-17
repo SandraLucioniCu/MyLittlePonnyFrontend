@@ -16,7 +16,7 @@ function LoginForm(props){
     const [alertMessage, setAlertMessage] = useState('');
 
     return(
-        <form action="#">
+        <form action="javascript:void(0);">
                 <h1>Iniciar Sesión</h1>
                 <div className="register-container">
                     <img src="../../img/profiles/general.jpg" />
