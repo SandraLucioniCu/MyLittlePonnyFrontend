@@ -1,0 +1,50 @@
+.menu {
+    /*display: block ruby;
+    
+    flex-direction: column;*/
+    margin-right: 50px;
+    position: relative;
+    float: left;
+    border-radius: 10px;
+    width: 250px;
+    background-color: #fae5d3;
+    box-shadow: 0 14px 28px rgba(218, 112, 214, 0.25), 0 10px 10px rgb(32, 13, 58);
+}
+
+/*.menu.settings {
+    width: 300px !important;
+}*/
+.menu-list {
+    margin: 0;
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+.menu-list, ul {
+    list-style-type: none;
+}
+.menu-list + .menu-list {
+    border-top: 1px solid #ddd;
+}
+
+.menu-sub-list:hover {
+    display: flex;
+}
+.menu-item {
+    position: relative;
+}
+.menu-button {
+    font: inherit;
+    color: inherit;
+    outline: none;
+    border: 0;
+    padding: 8px 8px;
+    width: 90%;
+    margin-left: 10px;
+    border-radius: 8px;
+    /*display: flex;*/
+    align-items: center;
+    position: relative;
+    background-color: #f6d7d7;
+    cursor: pointer;
+}

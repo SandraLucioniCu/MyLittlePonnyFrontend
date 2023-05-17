@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Lobster';
+    src: local('Lobster'), url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+}
+
+.button-default {
+    border-radius: 20px;
+    border: 1px solid #DAF7A6;
+    background: #FFB6C1;
+    color: #DAF7A6;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+.button-alt {
+    border-radius: 20px;
+    border: 1px solid #DAF7A6;
+    background: #FFB6C1;
+    color: #DAF7A6;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background: transparent;
+    border-color: #fae5d3;
+}

@@ -1,0 +1,15 @@
+/*.menu.settings {
+    width: 300px !important;
+}*/
+.menu-list {
+    margin: 0;
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+.menu-list, ul {
+    list-style-type: none;
+}
+.menu-list + .menu-list {
+    border-top: 1px solid #ddd;
+}

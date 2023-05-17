@@ -1,0 +1,71 @@
+/* check box */
+li {
+    display: inline-block;
+}
+
+.inputSelector[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+}
+
+.labelSelector {
+    /*border: 1px solid #DAF7A6;*/
+    display: block;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.labelSelector:before {
+    background-color: #fae5d3;
+    color: #fae5d3;
+    content: " ";
+    display: block;
+    border-radius: 50px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+.characterSelector-container img {
+    height: 45px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+    width: 49px;
+}
+
+:checked + .labelSelector {
+    border-color: #fae5d3;
+    background: #FFB6C1;
+    border-radius: 50px;
+    box-shadow: 1px 1px 2px 2px rgba(218, 247, 166, 0.68);
+}
+
+:checked + .labelSelector:before {
+    /*content: "✓";
+    background-color: #FFB6C1;
+    transform: scale(1);*/
+}
+
+:checked + .labelSelector img {
+    transform: scale(0.9);
+    z-index: -1;
+}
+
+/* scale */
+.inputSelector{
+    text-align: center;
+    display: inline-block;
+    padding: 0px;
+}
+
+.labelSelector:hover{
+    transform: scale(3, 3);
+    transform-origin: bottom;
+    background: #FFB6C1;
+}
