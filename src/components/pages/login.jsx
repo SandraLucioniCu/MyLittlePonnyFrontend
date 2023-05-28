@@ -2,6 +2,8 @@
 import Button from "../atoms/button/Button";
 import RegisterForm from "../molecules/register-form/RegisterForm";
 import LoginForm from "../molecules/login-form/LoginForm";
+import PubSub from "../atoms/pubsub/Pubsub";
+import Alert from "../atoms/alert/Alert";
 import '../../style/login/login-style.css';
 import '../../js/event';
 const CONFIG = require('../../config/roots.json');
@@ -19,9 +21,12 @@ function Login(){
     }
 
     function callGreetings(){                  
-        fetch(CONFIG.url + '/login/saludo', {
+        fetch(CONFIG.url + '/game', {
             method: "GET",
-            mode: 'cors'
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+              }
         })
             .then(response => {
                 let responseCopy = response;
@@ -37,6 +42,7 @@ function Login(){
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
                 <style dangerouslySetInnerHTML={{__html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    " }} />
+                <Alert></Alert>
                 <div className="container" id="container">
                     <RegisterForm />
                     <div className="form-container sign-in-container">

@@ -13,9 +13,46 @@ function RegisterForm(props){
     const [password, setPassword] = useState('');
     const [pony, setPony] = useState('');
 
+    const doRegister = () => 
+    {
+        const registerForm = {
+            nickname: nickname,
+            email: email,
+            password: password,
+            ponyImg: pony
+        };
+    
+        const body = JSON.stringify(registerForm);
+    
+        console.log(body);
+    
+        fetch(CONFIG.url + '/login/register', {
+            method: "POST",
+            mode: 'cors',
+            credentials: 'include',
+            body: body,
+            headers: {
+                "Content-Type": "application/json",
+              },
+        })
+            .then(response => {
+                let responseCopy = response;
+                if(responseCopy.ok === false){
+                    console.log(responseCopy.status);
+                    if(responseCopy.status === 409){
+                        debugger;
+                        window.bus.publish("alert", {type: "error", message: "Ese usuario ya existe"});
+                    }
+                }else{
+                    console.log("Created");
+                }
+            })
+            .catch(function(error) {console.error("error")});
+    }
+
     return(
         <div className="form-container sign-up-container">
-                        <form action="#">
+                        <form action="javascript:void(0);">
                             <h1>Crea tu Cuenta</h1>
                             <div className="characterSelector-container">
                                 <PonyList selectPony = { (ponyImage) => setPony(ponyImage)}/>
@@ -24,43 +61,11 @@ function RegisterForm(props){
                             <Input name="email" type="email" holder="Email" change={e => setEmail(e.target.value)}/>
                             <Input name="password" type="password" holder="Password" change={e => setPassword(e.target.value)}/>
                             <div>
-                                <Button name="Guardar" type="submit" className="button"click ={ () => doRegister(nickname, email, password, pony)}/>
+                                <Button name="Guardar" type="submit" className="button" click ={doRegister}/>
                             </div>
                         </form>
                     </div>
     );
-}
-
-function doRegister(nickname, email, password, pony){
-    const registerForm = {
-        nickname: nickname,
-        email: email,
-        password: password,
-        ponyImg: pony
-    };
-
-    const body = JSON.stringify(registerForm);
-
-    console.log(body);
-
-    fetch(CONFIG.url + '/login/register', {
-        method: "POST",
-        mode: 'cors',
-        credentials: 'include',
-        body: body,
-        headers: {
-            "Content-Type": "application/json",
-          },
-    })
-        .then(response => {
-            let responseCopy = response;
-            if(responseCopy.ok === false){
-                console.log(responseCopy.status);
-            }else{
-                console.log("Created");
-            }
-        })
-        .catch(function(error) {console.error("error")});
 }
 
 export default RegisterForm;
