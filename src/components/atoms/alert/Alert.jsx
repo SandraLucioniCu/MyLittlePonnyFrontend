@@ -34,3 +34,5 @@ function Alert() {
 };
 
 export default Alert;
+
+// https://huntertrammell.dev/blog/how-to-create-a-dynamic-alert-component-in-react

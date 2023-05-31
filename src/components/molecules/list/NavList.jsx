@@ -1,7 +1,7 @@
 import MenuListSvg from "../svg/MenuListSvg";
 import '../../../style/menu/navList.css';
 
-function NavList(props){
+function NavList(){
 
     return(
         <ul className="menu-list">

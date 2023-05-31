@@ -1,61 +1,93 @@
 import '../../style/menu/menu-style.css';
-import MenuListSvg from "../molecules/svg/MenuListSvg";
-import Image from "../img/Image";
-import StadisticDiv from "../atoms/stadisticsDiv/StadisticDiv";
-import {useEffect, useRef} from 'react';
-import NavList from '../molecules/list/NavList';
+import { useEffect, useRef, useState } from 'react';
 import PonyInfoList from '../molecules/list/PonyInfoList';
 import SettingsList from '../molecules/list/settingsList/SettingsList';
+import CoolButton from '../atoms/button/CoolButton'
+const CONFIG = require('../../config/roots.json');
+
 
 function Menu() {
     const textD = useRef(null);
 
+    const [text, setText] = useState('');
+    const [firstAnswer, setFirstAnswer] = useState({});
+    const [secondAnswer, setSecondAnswer] = useState({});
+
+    const [popularity, setPopularity] = useState(0);
+    const [knowledge, setKnowledge] = useState(0);
+    const [fun, setFun] = useState(0);
+
     useEffect(() => {
-        const container = textD.current;
+        fetch(CONFIG.url + '/game', {
+            method: "GET",
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(gameStatusDto => {
+                debugger;
+                const responseText = gameStatusDto.question;
+                const responseFirstAnswer = gameStatusDto.answers.filter(ans => ans.index === 0)[0];
+                const responseSecondAnswer = gameStatusDto.answers.filter(ans => ans.index === 1)[0];
 
-        if(container.children.length >= 2){
-            return;
-        }
+                setText(responseText);
+                setFirstAnswer(responseFirstAnswer);
+                setSecondAnswer(responseSecondAnswer);
+                setFun(gameStatusDto.stats.fun);
+                setKnowledge(gameStatusDto.stats.knowledge);
+                setPopularity(gameStatusDto.stats.popularity);
+            
+                const container = textD.current;
 
-        const speeds = {
-            pause: 500, //Higher number = longer delay
-            slow: 120,
-            normal: 90,
-            fast: 40,
-            superFast: 10
-        };
-
-        const textLines = [
-            {speed: speeds.slow, string: "Oh, hello!"},
-            {speed: speeds.pause, string: "", pause: true},
-            {speed: speeds.normal, string: "Have you seen my pet"},
-            {speed: speeds.fast, string: "frog", classes: ["green"]},
-            {speed: speeds.normal, string: "around?"}
-        ];
-
-
-        let characters = [];
-        textLines.forEach((line, index) => {
-            if (index < textLines.length - 1) {
-                line.string += " "; //Add a space between lines
-            }
-
-            line.string.split("").forEach((character) => {
-                let span = document.createElement("span");
-                span.textContent = character;
-                container.appendChild(span);
-                characters.push({
-                    span: span,
-                    isSpace: character === " " && !line.pause,
-                    delayAfter: line.speed,
-                    classes: line.classes || []
+                
+                if (container.children.length >= 2) {
+                    return;
+                }
+                
+        
+                const speeds = {
+                    pause: 500, //Higher number = longer delay
+                    slow: 120,
+                    normal: 90,
+                    fast: 40,
+                    superFast: 10
+                };
+        
+                const textLines = [
+                    { speed: speeds.normal, string: responseText }, //add classes: , classes: ["green"]
+                ];
+        
+        
+                let characters = [];
+                textLines.forEach((line, index) => {
+                    if (index < textLines.length - 1) {
+                        line.string += " "; //Add a space between lines
+                    }
+        
+                    line.string.split("").forEach((character) => {
+                        let span = document.createElement("span");
+                        span.textContent = character;
+                        container.appendChild(character);
+                        characters.push({
+                            span: span,
+                            isSpace: character === " " && !line.pause,
+                            delayAfter: line.speed,
+                            classes: line.classes || []
+                        });
+                    });
                 });
-            });
-        });
-
-        //Kick it off
-
-            revealOneCharacter(characters);
+        
+                //Kick it off
+        
+                revealOneCharacter(characters);
+            
+            })
+            .catch(function (error) { console.error(error) });
 
     }, []);
 
@@ -73,77 +105,27 @@ function Menu() {
             }, delay);
         }
     }
-/*
-    function callGreetings(){                  
-        fetch(CONFIG.url + '/login/saludo', {
-            method: "GET",
-            mode: 'cors'
-        })
-            .then(response => {
-                let responseCopy = response;
-                console.log(responseCopy);
-                return responseCopy.json();
-            })
-            .then(data => console.log(data));
-    }
-
-    function callGreetings(){                  
-        fetch(CONFIG.url + '/login/saludo', {
-            method: "GET",
-            mode: 'cors'
-        })
-            .then(response => {
-                let responseCopy = response;
-                console.log(responseCopy);
-                return responseCopy.json();
-            })
-            .then(data => console.log(data));
-    }
-
-    function callGreetings(){                  
-        fetch(CONFIG.url + '/game', {
-            method: "GET",
-            mode: 'cors'
-        })
-            .then(response => {
-                let responseCopy = response;
-                console.log(responseCopy);
-                return responseCopy.json();
-            })
-            .then(data => console.log(data));
-    }*/
 
     return (
         <div>
-            <meta charSet="UTF-8"/>
-            <title>Menu</title>
-            <link rel="preconnect" href="https://fonts.googleapis.com"/>
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-            <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"/>
+            <meta charSet="UTF-8" />
+            <title>Game</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com"  />
+            <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
             <style
-                dangerouslySetInnerHTML={{__html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n"}}/>
+                dangerouslySetInnerHTML={{ __html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n" }} />
 
             <div>
-                <PonyInfoList/>
+                <PonyInfoList />
                 <div className="container" id="container">
                     <div ref={textD} id="text" className="text">
-                        <svg className="corner" viewBox="0 0 65 62" fill="none" xmlns="http://www.w3.org/2000/svg"/>
                     </div>
-                    <div className="aswersBoxes">
-                        <button id="box1" className="boxes">
-                            <p id="option1" text="answerOne"/>
-                        </button>
-                        <button id="box2" className="boxes">
-                            <p id="option2" value="answerTwo"/>
-                        </button>
-                        <button id="box3" className="boxes">
-                            <p id="option3" value="answerThree"/>
-                        </button>
-                    </div>
+                    <CoolButton nameOne={firstAnswer.text} nameTwo={secondAnswer.text}></CoolButton>
                 </div>
-                <SettingsList/>
+                <SettingsList popularity={popularity} fun={fun} knowledge={knowledge}/>
             </div>
-            
+
         </div>
     );
 }

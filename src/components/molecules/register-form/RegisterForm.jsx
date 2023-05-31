@@ -40,7 +40,6 @@ function RegisterForm(props){
                 if(responseCopy.ok === false){
                     console.log(responseCopy.status);
                     if(responseCopy.status === 409){
-                        debugger;
                         window.bus.publish("alert", {type: "error", message: "Ese usuario ya existe"});
                     }
                 }else{
@@ -61,7 +60,7 @@ function RegisterForm(props){
                             <Input name="email" type="email" holder="Email" change={e => setEmail(e.target.value)}/>
                             <Input name="password" type="password" holder="Password" change={e => setPassword(e.target.value)}/>
                             <div>
-                                <Button name="Guardar" type="submit" className="button" click ={doRegister}/>
+                                <Button name="Guardar" type="submit" class="button" click ={doRegister}/>
                             </div>
                         </form>
                     </div>

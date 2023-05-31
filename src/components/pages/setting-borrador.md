@@ -6,7 +6,7 @@ var NewComponent = React.createClass({
                 <meta charSet="UTF-8" />
                 <title>Configuración</title>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+                <link rel="preconnect" href="https://fonts.gstatic.com"  />
                 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-food.css" />

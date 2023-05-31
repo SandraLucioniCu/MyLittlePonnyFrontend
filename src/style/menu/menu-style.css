@@ -1,12 +1,10 @@
 /* importar fuente */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
-
-* {
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kalam:wght@300&family=Lobster+Two:wght@700&family=Satisfy&display=swap');* {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Lobster', cursive;
+    font-family: 'Lobster Two', cursive;
     background-image: url("../../../public/img/backgrounds/profile.jpg");
     display: flex;
     flex-direction: column;
@@ -23,19 +21,17 @@ h1 {
 }
 
 p {
-    font-size: 14px;
+    font-size: 30px;
     font-weight: 100;
-    line-height: 20px;
-    letter-spacing: 0.5px;
     margin: 20px 0 30px;
 }
 
-span {
-    font-size: 12px;
+.text span {
+    font-size: 18px;
 }
 
 a {
-    color:  #DAF7A6;
+    /*color:  #DAF7A6;*/
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
@@ -113,6 +109,7 @@ h3 {
     border-radius: 8px;
     background-color:  #f6d7d7;
     cursor: pointer;
+    color: #1c3553;
 }
 
 /* SPEECH TEXT BOX*/
@@ -131,14 +128,13 @@ h3 {
 }
 
 .text {
-    font-size: 6vw;
-    word-spacing: 0.2em;
+    font-size: 5vw;
     background: #f6d7d7;
     padding: 10px;
     position:relative;
-    line-height: 0em;
+    line-height: 0.1em;
     width: 660px;
-    height: 100px;
+    height: 180px;
     margin-top: 50px;
     margin-left: 50px;
     border-radius: 10px;
@@ -152,38 +148,16 @@ h3 {
     transform: translateY(80%);
 }
 
-/* BOXES */
-
-.answersBoxes{
-    box-shadow: 0 14px 28px rgba(218, 112, 214, 0.25), 0 10px 10px rgb(32, 13, 58);
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
+.aswersBoxes{
+    width : 100% ;
+    display : flex ;
+    justify-content : center ;
+    align-items : center ;
 }
 
-.boxes{
-    background-color: #f6d7d7;
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    border-radius: 10px;
-    width: 150px;
-    height: 150px;
-    margin-bottom: 250px;
-    margin-top: 50px;
-    padding: 20px;
+.aswersBoxes2{
     float: left;
-    cursor: pointer;
-}
-
-#box1{
-    margin-left: 120px;
-}
-
-#box2{
-    margin-left: 320px;
-}
-
-#box3{
-    margin-left: 520px;
+    width : 100% ;
+    display : flex ;
+    align-items : center ;
 }

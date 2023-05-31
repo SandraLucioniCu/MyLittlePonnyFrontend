@@ -39,7 +39,7 @@ function Login(){
         return (
             <div>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
                 <style dangerouslySetInnerHTML={{__html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    " }} />
                 <Alert></Alert>
@@ -52,15 +52,15 @@ function Login(){
                         <div className="overlay">
                             <div className="overlay-panel overlay-left">
                                 <h1>¡Bienvenide!</h1>
-                                <p>
-                                    [texto]
+                                <p className="msg">
+                                    ¿Ya tienes una cuenta?<br/>¡Entra!
                                 </p>
                                 <Button id="signIn" name={"Empezar"} click={toggleContainerClassTwo}/>
                                 <Button id="saludo" name={"Saludo"} click={callGreetings}/>
                             </div>
                             <div className="overlay-panel overlay-right">
                                 <h1>¡Estás de vuelta!</h1>
-                                <p>¿No tienes cuenta?<br />¿Quieres jugar?</p>
+                                <p className="msg">¿No tienes cuenta?<br />¿Quieres jugar?</p>
                                 <Button id="signUp" name={"Registrarte"} click={toggleContainerClass}/>
                             </div>
                         </div>

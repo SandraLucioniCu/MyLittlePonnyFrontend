@@ -1,7 +1,6 @@
 .menu {
-    /*display: block ruby;
-    
-    flex-direction: column;*/
+    /*display: block ruby;*/
+    /*flex-direction: column;*/
     margin-right: 50px;
     position: relative;
     float: left;
@@ -36,15 +35,24 @@
 .menu-button {
     font: inherit;
     color: inherit;
-    outline: none;
     border: 0;
     padding: 8px 8px;
-    width: 90%;
+    width: 200px;
+    height: 55px;
     margin-left: 10px;
     border-radius: 8px;
-    /*display: flex;*/
-    align-items: center;
-    position: relative;
     background-color: #f6d7d7;
     cursor: pointer;
+}
+
+.menu-button:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #431c53a2;
+    transition: 0.7s;
+    background-color: #4e306b83;
+}
+
+span{
+    color: #1c3553;
 }

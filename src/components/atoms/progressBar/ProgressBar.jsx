@@ -3,14 +3,14 @@ import '../../../style/menu/progressBar.css'
 
 const ProgressBar = (props) => {
 
-    const { bgcolor, completed, name } = props;
+    const {completed, name } = props;
 
     const filler = {
-        height: '100%',
+        height: '32px',
         width: `${completed}%`,
-        backgroundColor: '#DAF7A6',
+        backgroundColor: '#f6d7d7',
         borderRadius: 'inherit',
-        textAlign: 'right'
+        textAlign: 'center'
     }
   
     return (

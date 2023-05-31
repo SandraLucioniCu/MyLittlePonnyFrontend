@@ -2,7 +2,7 @@ import Image from "../../img/Image";
 import '../../../style/menu/ponyInfoList.css';
 import NavList from "./NavList";
 
-function PonyInfoList(props){
+function PonyInfoList(){
 
     return(
 
