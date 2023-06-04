@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-undef
-import PonyvilleMap from '../molecules/map/PonyvilleMap';
 import React from "react";
 import '../../style/map/map-style.css';
 
@@ -77,4 +76,4 @@ function Settings() {
 
 }
 
-export default Map;
+export default Settings;

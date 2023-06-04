@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-body {
+#menu-container {
     font-family: 'Lobster Two', cursive;
     background-image: url("../../../public/img/backgrounds/profile.jpg");
     display: flex;
@@ -12,6 +12,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: -20px 0 50px;
+    background-repeat: round;
+    overflow: hidden;
 }
 
 h1 {
@@ -24,6 +26,10 @@ p {
     font-size: 30px;
     font-weight: 100;
     margin: 20px 0 30px;
+}
+
+.text {
+    overflow: auto;
 }
 
 .text span {

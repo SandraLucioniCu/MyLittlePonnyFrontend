@@ -37,11 +37,9 @@ function Login(){
     }
 
         return (
-            <div>
+            <div id="login-container">
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
-                <style dangerouslySetInnerHTML={{__html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    " }} />
                 <Alert></Alert>
                 <div className="container" id="container">
                     <RegisterForm />

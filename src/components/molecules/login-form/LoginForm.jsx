@@ -9,7 +9,6 @@ const CONFIG = require('../../../config/roots.json');
 function LoginForm(props){
     const navigate = useNavigate();
 
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [show, setShow] = useState(false);
@@ -24,7 +23,7 @@ function LoginForm(props){
                 <Input name="email" type="email" holder="example@example.com" change={e => setEmail(e.target.value)}/>
                 <Input name="password" type="password" holder="********" change={e => setPassword(e.target.value)}/>
                 <div>
-                    <Button class="button-default" name="Entrar" type="submit" className="button"click ={ () => doLogin(email, password, navigate)}/>
+                    <Button class="button-default" name="Entrar" type="submit" className="button" click ={ () => doLogin(email, password, navigate)}/>
                 </div>
             </form>
     );
