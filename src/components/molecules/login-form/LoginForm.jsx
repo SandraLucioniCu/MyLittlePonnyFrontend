@@ -54,8 +54,7 @@ function doLogin(email, password, navigate){
                 console.log(responseCopy.status);
                 alert("Email o contraseña incorrecta ");
             }else{
-                navigate('/menu');
-                console.log("Done");
+                navigate('/selectGame');
             }
         })
         .catch(function(error) {console.error("error")});

@@ -1,6 +1,13 @@
 /* importar fuente */
-@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kalam:wght@300&family=Lobster+Two:wght@700&family=Satisfy&display=swap');* {
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+
+
+* {
     box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
 }
 
 #menu-container {
@@ -10,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 105vh;
     margin: -20px 0 50px;
     background-repeat: round;
     overflow: hidden;

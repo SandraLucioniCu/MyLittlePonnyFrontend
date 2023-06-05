@@ -1,5 +1,4 @@
 import MenuListSvg from "../svg/MenuListSvg";
-import Button from "../../atoms/button/Button";
 import { useNavigate } from 'react-router-dom';
 
 import '../../../style/menu/navList.css';
@@ -12,7 +11,7 @@ function NavList(){
         <ul className="menu-list">
             <li className="menu-item context-buttons">
 
-                <Button class="context-button" className="button" click ={ () => navigate('/game')}>
+                <button className="context-button">
                     <MenuListSvg className="bi bi-box-arrow-right"
                         vectors={[
                             {
@@ -25,8 +24,9 @@ function NavList(){
                             }
                         ]}
                     />
-                </Button>
-                <button className="context-button">
+                </button>
+
+                <button className="context-button"  onClick ={ () => navigate('/game')}>
                     <MenuListSvg className="bi bi-pin-map-fill"
                         vectors={[
                             {
@@ -40,7 +40,7 @@ function NavList(){
                         ]}
                     />
                 </button>
-                <button className="context-button">
+                <button className="context-button" onClick ={ () => navigate('/selectGame')}>
                     <MenuListSvg className="bi bi-chat-square-heart"
                         vectors={[
                             {

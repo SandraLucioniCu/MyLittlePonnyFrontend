@@ -1,5 +1,5 @@
 import '../../style/menu/menu-style.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import PonyInfoList from '../molecules/list/PonyInfoList';
 import SettingsList from '../molecules/list/settingsList/SettingsList';
@@ -9,10 +9,10 @@ const CONFIG = require('../../config/roots.json');
 
 function Menu() {
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const textD = useRef(null);
 
-    const [text, setText] = useState('');
     const [firstAnswer, setFirstAnswer] = useState({});
     const [secondAnswer, setSecondAnswer] = useState({});
 
@@ -21,7 +21,7 @@ function Menu() {
     const [fun, setFun] = useState(0);
 
     useEffect(() => {
-        fetch(CONFIG.url + '/game', {
+        fetch(CONFIG.url + '/game?storyId=' + id, {
             method: "GET",
             mode: 'cors',
             credentials: 'include',
@@ -30,7 +30,15 @@ function Menu() {
             },
         })
             .then(response => {
-                return response.json();
+                let responseCopy = response;
+                if (responseCopy.ok === false) {
+                    if (response.status === 403 || response.status === 401) {
+                        navigate('/');
+                    } else {
+                        Promise.reject(responseCopy);
+                    }
+                }
+                return responseCopy.json();
             })
             .then(gameStatusDto => {
                 drawGame(gameStatusDto);
@@ -42,6 +50,7 @@ function Menu() {
     const updateGame = (option) => {
 
         var body = JSON.stringify({
+            "storyId": "story_01.json",
             "answerIndex": option,
         });
 
@@ -57,8 +66,8 @@ function Menu() {
             .then(response => {
                 let responseCopy = response;
                 if (responseCopy.ok === false) {
-                    if (response.status === 403) {
-                        navigate('/login');
+                    if (response.status === 403 || response.status === 401) {
+                        navigate('/');
                     } else {
                         Promise.reject(responseCopy);
                     }
@@ -77,14 +86,12 @@ function Menu() {
         const responseFirstAnswer = gameStatusDto.answers.filter(ans => ans.index === 0)[0];
         const responseSecondAnswer = gameStatusDto.answers.filter(ans => ans.index === 1)[0];
 
-        setText(responseText);
         setFirstAnswer(responseFirstAnswer);
         setSecondAnswer(responseSecondAnswer);
         setFun(gameStatusDto.stats.fun);
         setKnowledge(gameStatusDto.stats.knowledge);
         setPopularity(gameStatusDto.stats.popularity);
 
-        debugger;
         const container = textD.current;
         container.innerHTML = "";
         if (container.children.length >= 2) {

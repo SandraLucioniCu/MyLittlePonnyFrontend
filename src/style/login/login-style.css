@@ -1,17 +1,14 @@
 /* importar fuente */
-@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kalam:wght@300&family=Lobster+Two:wght@700&family=Satisfy&display=swap');*
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
 
-* {
-    box-sizing: border-box;
-}
 
 body {
     overflow: hidden;
 }
 
 #login-container {
-    font-family: 'Lobster', cursive;
+    font-family: 'Lobster Two', cursive;
     background-image: url("../../../public/img/backgrounds/profile.jpg");
     display: flex;
     flex-direction: column;
