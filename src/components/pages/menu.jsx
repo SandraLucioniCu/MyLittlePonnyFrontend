@@ -20,7 +20,9 @@ function Menu() {
     const [knowledge, setKnowledge] = useState(0);
     const [fun, setFun] = useState(0);
 
+
     useEffect(() => {
+          
         fetch(CONFIG.url + '/game?storyId=' + id, {
             method: "GET",
             mode: 'cors',
@@ -44,13 +46,12 @@ function Menu() {
                 drawGame(gameStatusDto);
             })
             .catch(function (error) { console.error(error) });
-
     }, []);
 
     const updateGame = (option) => {
 
         var body = JSON.stringify({
-            "storyId": "story_01.json",
+            "storyId": id,
             "answerIndex": option,
         });
 
@@ -82,6 +83,10 @@ function Menu() {
 
     const drawGame = (gameStatusDto) => {
 
+        if(gameStatusDto.hasEnded == true){
+            navigate("/historyResume")
+        }
+
         const responseText = gameStatusDto.question;
         const responseFirstAnswer = gameStatusDto.answers.filter(ans => ans.index === 0)[0];
         const responseSecondAnswer = gameStatusDto.answers.filter(ans => ans.index === 1)[0];
@@ -108,7 +113,7 @@ function Menu() {
         };
 
         const textLines = [
-            { speed: speeds.normal, string: responseText }, //add classes: , classes: ["green"]
+            { speed: speeds.fast, string: responseText }, //add classes: , classes: ["green"]
         ];
 
 
@@ -153,15 +158,10 @@ function Menu() {
 
     return (
         <div id="menu-container">
-            <meta charSet="UTF-8" />
-            <title>Game</title>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-
             <div>
                 <PonyInfoList />
                 <div className="container" id="container">
-                    <div ref={textD} id="text" className="text">
+                    <div ref={textD} className="text">
                     </div>
                     <CoolButton
                         nameOne={firstAnswer.text}
@@ -169,7 +169,7 @@ function Menu() {
                         clickOne={() => updateGame(0)}
                         clickTwo={() => updateGame(1)}></CoolButton>
                 </div>
-                <SettingsList popularity={popularity} fun={fun} knowledge={knowledge} />
+                <SettingsList id="menuLive" popularity={popularity} fun={fun} knowledge={knowledge} />
             </div>
         </div>
     );

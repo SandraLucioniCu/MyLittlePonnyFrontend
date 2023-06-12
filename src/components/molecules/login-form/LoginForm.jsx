@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from "../../atoms/input/Input";
 import Button from "../../atoms/button/Button";
@@ -11,14 +11,31 @@ function LoginForm(props){
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [show, setShow] = useState(false);
-    const [alertMessage, setAlertMessage] = useState('');
+
+    useEffect(() => {
+        fetch(CONFIG.url + '/login', {
+            method: "GET",
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                let responseCopy = response;
+                if (responseCopy.ok === true) {
+                    navigate('/selectGame#carousel__slide0');
+                }
+            })
+            .catch(function (error) { console.error(error) });
+
+    }, []);
 
     return(
         <form action="javascript:void(0);">
                 <h1>Iniciar Sesión</h1>
                 <div className="register-container">
-                    <img src="../../img/profiles/general.jpg" />
+                    <img src="../../img/profiles/general.jpg" alt="background"/>
                 </div>
                 <Input name="email" type="email" holder="example@example.com" change={e => setEmail(e.target.value)}/>
                 <Input name="password" type="password" holder="********" change={e => setPassword(e.target.value)}/>
@@ -52,9 +69,9 @@ function doLogin(email, password, navigate){
             let responseCopy = response;
             if(responseCopy.ok === false){
                 console.log(responseCopy.status);
-                alert("Email o contraseña incorrecta ");
+                window.bus.publish("alert", {type: "error", message: "Email o contraseña incorrectas"});
             }else{
-                navigate('/selectGame');
+                navigate('/selectGame#carousel__slide0');
             }
         })
         .catch(function(error) {console.error("error")});

@@ -13,3 +13,47 @@
 .menu-list + .menu-list {
     border-top: 1px solid #ddd;
 }
+
+/*
+button[title]:hover:after {
+    content: attr(title);
+    padding: 40px 8px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+    background:rgb(122, 93, 175);
+}*/
+
+[title]:hover:after {
+    opacity: 1;
+    transition: all 0.3s ease 0.5s;
+    visibility: visible;
+}
+[title]:after {
+    content: attr(title);
+    background-color: #1c3553;
+    color: rgb(183, 224, 56, 0.7);
+    font-size: 14px;
+    position: absolute;
+    padding: 3px 20px;
+    bottom: -1.6em;
+    left: 100%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 3px #1c3553;
+    opacity: 0;
+    border: 1px solid 0 14px 28px rgba(218, 112, 214, 0.25);
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+    
+}
+[title] {
+    position: relative;
+}
+
+[button]:hover:after{
+    color: rgb(183, 224, 56, 0.7);
+    visibility: hidden;
+    opacity: 0;
+}

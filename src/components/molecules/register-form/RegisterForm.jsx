@@ -4,8 +4,6 @@ import PonyList from "../../atoms/ponyList/PonyList";
 import Button from "../../atoms/button/Button";
 const CONFIG = require('../../../config/roots.json');
 
-
-
 function RegisterForm(props){
 
     const [nickname, setNickname] = useState('');
@@ -44,6 +42,7 @@ function RegisterForm(props){
                     }
                 }else{
                     console.log("Created");
+                    window.bus.publish("alert", {type: "success", message: "Registrado"});
                 }
             })
             .catch(function(error) {console.error("error")});
@@ -51,19 +50,19 @@ function RegisterForm(props){
 
     return(
         <div className="form-container sign-up-container">
-                        <form action="javascript:void(0);">
-                            <h1>Crea tu Cuenta</h1>
-                            <div className="characterSelector-container">
-                                <PonyList selectPony = { (ponyImage) => setPony(ponyImage)}/>
-                            </div>
-                            <Input name="nickname" type="text" holder="Nickname" change={e => setNickname(e.target.value)}/>
-                            <Input name="email" type="email" holder="Email" change={e => setEmail(e.target.value)}/>
-                            <Input name="password" type="password" holder="Password" change={e => setPassword(e.target.value)}/>
-                            <div>
-                                <Button name="Guardar" type="submit" class="button" click ={doRegister}/>
-                            </div>
-                        </form>
-                    </div>
+            <form action="javascript:void(0);">
+                <h1>Crea tu Cuenta</h1>
+                <div className="characterSelector-container">
+                    <PonyList selectPony = { (ponyImage) => setPony(ponyImage)}/>
+                </div>
+                <Input name="nickname" type="text" holder="Nickname" change={e => setNickname(e.target.value)}/>
+                <Input name="email" type="email" holder="Email" change={e => setEmail(e.target.value)}/>
+                <Input name="password" type="password" holder="Password" change={e => setPassword(e.target.value)}/>
+                <div>
+                    <Button name="Guardar" type="submit" class="button" click ={doRegister}/>
+                </div>
+            </form>
+        </div>
     );
 }
 

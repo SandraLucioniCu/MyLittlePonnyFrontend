@@ -1,19 +1,19 @@
-/* importar fuente */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
-
-* {
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
 
 body {
-    font-family: 'Lobster', cursive;
-    background-image: url("public/img/backgrounds/profile.jpg");
+  overflow: hidden;
+}
+
+#map-container {
+    font-family: 'Lobster Two', cursive;
+    background-image: url("../../../public/img/backgrounds/profile.jpg");
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: -20px 0 50px;
+    height: 105vh;
+    background-repeat: round;
+    overflow: hidden;
 }
 
 p {
@@ -25,6 +25,27 @@ p {
 }
 
 .container {
+    background:   #fae5d3 ;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(218, 112, 214, 0.25), 0 10px 10px rgb(32, 13, 58);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 250px;
+    margin-top: 30px;
+    background-color: #fae5d3;
+    box-shadow: 0 14px 28px rgba(218, 112, 214, 0.25), 0 10px 10px rgb(32, 13, 58);
+}
+
+.map-box {
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(218, 112, 214, 0.25), 0 10px 10px rgb(32, 13, 58);
     position: relative;

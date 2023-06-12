@@ -1,31 +1,44 @@
 // eslint-disable-next-line no-undef
-import PonyvilleMap from '../molecules/map/PonyvilleMap';
-import React from "react";
 import '../../style/map/map-style.css';
+import React from 'react';
+import PonyvilleMap from '../molecules/map/PonyvilleMap';
+import MenuListSvg from '../molecules/svg/MenuListSvg';
+
+import { useNavigate } from 'react-router-dom';
 
 
-class Map extends React.Component{
 
-    render(){
-        return(
-            <div>
-                <title>Mapa</title>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
-                <link rel="stylesheet" href="https://maps-sdk.trimblemaps.com/v3/trimblemaps-3.5.0.css" />
-                <style dangerouslySetInnerHTML={{__html: "\n@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n" }} />
+function Map(){
 
-                <div className="container" id="container ">
-                    <img src="../../public/img/backgrounds/ponyville.jpg" alt="Workplace" useMap="#image-map" width="100%" height="100%" />
+    const navigate = useNavigate(); 
+
+    return(
+        <div id='map-container'>
+            <div className="container">
+                <button id='go-back-button' className="context-button" onClick ={ () => navigate('/menu/:id')}>
+                    <MenuListSvg className="bi bi-arrow-up-left-circle-fill"
+                        vectors={[
+                            {
+                                fillRule: "evenodd",
+                                vector: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904 2.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707l4.096 4.096z"
+                            }
+                        ]}
+                    />
+                </button>     
+                <div className="map-box">
                     <PonyvilleMap/>
                 </div>
                 <div className="menu">
                     <p id="desc">Pasa el ratón por la imagen para saber los lugares que hay.</p>
                 </div>
+                
             </div>
-        );
-    }
+        </div>
+    );
+ 
+        
 }
 
 export default Map;
+
+

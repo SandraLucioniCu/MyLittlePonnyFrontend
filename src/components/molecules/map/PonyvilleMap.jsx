@@ -1,5 +1,5 @@
-import './map.css.css';
-import Area from "../area/Area";
+import './map.css';
+import Area from "../../atoms/area/Area";
 
 function PonyvilleMap(){
     return (

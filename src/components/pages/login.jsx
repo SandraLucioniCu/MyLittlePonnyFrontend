@@ -16,7 +16,7 @@ function Login(){
 
     function toggleContainerClassTwo(){
         const container = document.getElementById('container');
-        container.classList.remove('right-panel-active')
+        container.classList.remove('right-panel-active');
     }
 
         return (

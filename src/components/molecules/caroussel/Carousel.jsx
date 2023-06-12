@@ -35,19 +35,19 @@ function Carousel(){
                 let prev = 0;
                 let next = 0;
 
-                if(i == 0){
-                    if(i != stories.length){
+                if(i === 0){
+                    if(i !== stories.length){
                         if(i + 1 <= stories.length){
                             next = i + 1;
                         }else{
-                            next = stories.length;
+                            next = stories.length - 1;
                         }
 
                         if(i - 1 > 0)
                         {
                             prev = i - 1;
                         }else{
-                            prev = stories.length;
+                            prev = stories.length - 1;
                         }
                     }
                 }
@@ -66,7 +66,7 @@ function Carousel(){
         })
         .catch(function (error) { console.error(error) });
 
-    }, []);
+    }, [navigate]);
 
     return(
         <section className="carousel" aria-label="Gallery">

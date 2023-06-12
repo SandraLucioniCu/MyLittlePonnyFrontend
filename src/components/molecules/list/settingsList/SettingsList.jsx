@@ -5,15 +5,15 @@ import ProgressBar from '../../../atoms/progressBar/ProgressBar';
 function SettingsList(props){
 
   const testData = [
-    {completed: props.popularity, name:"Popularidad" },
-    {completed: props.knowledge, name:"Conocimiento"},
-    {completed: props.fun, name:"Diversion" }
+    {completed: props.popularity, name:"Popularidad", backgroundColor: '#dbee9f'},
+    {completed: props.knowledge, name:"Conocimiento", backgroundColor: '#80cbbd'},
+    {completed: props.fun, name:"Diversion", backgroundColor: ' #beb7dc'}
 ];
 
     return(
-        <div className="menuLive">
+        <div id={props.id}>
             {testData.map((item) => (
-                <ProgressBar completed={item.completed} name={item.name} />
+                <ProgressBar completed={item.completed} name={item.name} backgroundColor={item.backgroundColor} />
                 ))}
         </div>
     );

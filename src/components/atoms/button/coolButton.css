@@ -10,7 +10,7 @@
 :root{
     /* color type A */
     --line_color : #1c3553 ;
-    --back_color : rgb(139, 104, 138)  ;
+    --back_color : rgb(183, 224, 56, 0.7);
 
     /* color type B */
     /* --line_color : #1b1919 ;

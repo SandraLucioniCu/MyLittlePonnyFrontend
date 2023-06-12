@@ -98,7 +98,7 @@
     width: 100%;
     background-color: #f99;
     counter-increment: item;
-    background-image: url("../../../../public/img/backgrounds/restaurant.png");
+    background-image: url("../../../../public/img/covers/cover1.jpg");
     background-size: cover;
     background-repeat: round;
   }
@@ -177,12 +177,12 @@
   
   .carousel::before,
   .carousel__prev {
-    left: -1rem;
+    left: 0rem;
   }
   
   .carousel::after,
   .carousel__next {
-    right: -1rem;
+    right: 0rem;
   }
   
   .carousel::before,

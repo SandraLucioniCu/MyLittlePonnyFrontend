@@ -1,17 +1,35 @@
+import '../../../style/menu/navList.css';
 import MenuListSvg from "../svg/MenuListSvg";
 import { useNavigate } from 'react-router-dom';
-
-import '../../../style/menu/navList.css';
+const CONFIG = require('../../../config/roots.json');
 
 function NavList(){
 
     const navigate = useNavigate();
 
+    const logout = () => {
+        fetch(CONFIG.url + '/login/logout', {
+            method: "GET",
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                let responseCopy = response;
+                if (responseCopy.ok === true) {
+                    navigate('/');
+                }
+            })
+            .catch(function (error) { console.error(error) });
+    };
+
     return(
         <ul className="menu-list">
             <li className="menu-item context-buttons">
 
-                <button className="context-button">
+                <button title="Salir" className="context-button" onClick ={ () => logout()}>
                     <MenuListSvg className="bi bi-box-arrow-right"
                         vectors={[
                             {
@@ -26,40 +44,27 @@ function NavList(){
                     />
                 </button>
 
-                <button className="context-button"  onClick ={ () => navigate('/game')}>
-                    <MenuListSvg className="bi bi-pin-map-fill"
+                <button title="Selector de historias" className="context-button" onClick ={ () => navigate('/selectGame#carousel__slide0')}>
+                    <MenuListSvg className="bi bi-book"
                         vectors={[
                             {
                                 fillRule: "evenodd",
-                                vector: "M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"
-                            },
-                            {
-                                fillRule: "evenodd",
-                                vector: "M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"
+                                vector: "M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
                             }
                         ]}
                     />
                 </button>
-                <button className="context-button" onClick ={ () => navigate('/selectGame')}>
-                    <MenuListSvg className="bi bi-chat-square-heart"
+
+                <button title="Tu historia" className="context-button" onClick ={ () => navigate('/historyResume')}>
+                    <MenuListSvg className="bi bi-file-text"
                         vectors={[
                             {
                                 fillRule: "evenodd",
-                                vector: "M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12ZM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Z"
+                                vector: "M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"
                             },
                             {
                                 fillRule: "evenodd",
-                                vector: "M8 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"
-                            }
-                        ]}
-                    />
-                </button>
-                <button className="context-button">
-                    <MenuListSvg className="bi bi-tools"
-                        vectors={[
-                            {
-                                fillRule: "evenodd",
-                                vector: "M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"
+                                vector: "M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"
                             }
                         ]}
                     />
